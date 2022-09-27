@@ -1,0 +1,41 @@
+.container-bg {
+    background-color: #FBFBFB;
+}
+
+.header-styles {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 44px;
+}
+
+.p-styles {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+}
+
+.text-width {
+    width: 652px;
+}
+
+.span-styles {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.start-btn-styles {
+    width: 200.22px;
+    height: 40px;
+    background: linear-gradient(122.33deg, rgba(230, 0, 0, 0.84) 30.62%, #FFB6B6 100%);
+    border-radius: 7px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    color: #FFFFFF;
+    border: none;
+}

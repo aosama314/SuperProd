@@ -1,0 +1,32 @@
+.card {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    margin-top: 10px;
+    padding: 40px 0;
+    height: 426.86px;
+}
+
+.card-text-header {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 38px;
+    height: 88px;
+}
+
+.card-text-header-md {
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.card-text-content {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.card-text-content-md {
+    font-size: 18px;
+}
