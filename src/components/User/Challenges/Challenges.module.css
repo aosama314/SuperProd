@@ -63,3 +63,12 @@
     border: 1px solid red;
     color: red;
 }
+
+.productivity-container {
+    background: linear-gradient(112.83deg, rgba(255, 255, 255, 0.47) 0%, rgba(255, 255, 255, 0) 110.84%);
+    box-shadow: 0px 0px 17px rgba(230, 0, 0, 0.3);
+    border-radius: 15px;
+    font-family: 'Poppins';
+    font-style: normal;
+    height: 710px;
+}

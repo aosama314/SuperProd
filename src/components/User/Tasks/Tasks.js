@@ -22,15 +22,11 @@ ReactModal.defaultStyles.overlay.overflow = "auto";
 
 const customStyles = {
   content: {
-    // top: "15%",
-    // left: "25%",
-    // right: "25%",
-    // bottom: "25%",
-    // marginRight: "-50%",
-    // width: "841.93px",
     height: "300px",
     borderRadius: "30px",
     overflow: "auto",
+    margin: "5px auto",
+    width: "60%",
   },
 };
 

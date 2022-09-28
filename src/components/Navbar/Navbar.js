@@ -11,7 +11,6 @@ import BurgerMenuIcon from "../../assets/BurgerMenuIcon.png";
 import AchievementsIcon from "../../assets/AchievementsIcon.png";
 import RewardsIcon from "../../assets/RewardsIcon.png";
 import ChallengesIcon from "../../assets/ChallengesIcon.png";
-
 import useWindowDimensions from "./../../utils/useWindowDimensions";
 import {
   selectUser,
@@ -20,6 +19,7 @@ import {
   selectUserIsLoggedIn,
 } from "../../store/reducers/user";
 import Styles from "./Navbar.module.css";
+import { BiLogOutCircle } from "react-icons/bi";
 
 const NavBar = () => {
   const { height, width } = useWindowDimensions();
@@ -78,11 +78,23 @@ const NavBar = () => {
           {!authState ? "Testimonials" : "Achievements"}
         </span>
       </div>
+      {authState && (
+        <div
+          className="d-flex align-items-center cursor-pointer"
+          onClick={() => {
+            localStorage.clear();
+            setNavbarState("/");
+          }}
+        >
+          <BiLogOutCircle fontSize="30px" className="mr-1" />
+          <span className={`${Styles["menu-item-font"]}`}>Logout</span>
+        </div>
+      )}
     </React.Fragment>
   );
 
   return (
-    <div className={`container-fluid pt-3 pb-3 ${Styles["container-bg"]}`}>
+    <div className={`container-fluid pt-3 pb-3`}>
       <div
         className={`row pl-5 pr-5 ${
           width <= 1200 && "justify-content-around"

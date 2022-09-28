@@ -16,7 +16,7 @@ export const getChallengeTasksAsync = createAsyncThunk(
     };
     return await axios
       .post(
-        `https://localhost:5001/api/ChallangeTasks`,
+        `https://localhost:5001/api/ChallangeTasks/GetTasks`,
         requestTasksObject,
         thunkAPI
       )

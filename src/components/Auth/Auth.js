@@ -71,7 +71,7 @@ const Auth = ({ formType }) => {
             draggable: true,
             progress: undefined,
           });
-          navigate("/user");
+          navigate("/user/challenges");
         })
         .catch((promiseError) =>
           toast("Login Failed!", {
