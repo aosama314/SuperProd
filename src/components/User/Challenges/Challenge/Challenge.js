@@ -4,10 +4,10 @@ import Styles from "./Challenge.module.css";
 const Challenge = (props) => {
   return (
     <div
-      className={`d-flex flex-column align-items-center pt-3 ${Styles["challenge-card"]} m-2`}
+      className={`d-flex flex-column align-items-center pt-3 ${Styles["challenge-card"]} m-2 ${props.className}`}
     >
       <h6>{props.title}</h6>
-      <img src={props.img} width="83px" />
+      <img src={props.img} width="83px" className={props.imgClassName} />
       <button
         className={`${Styles["start-challenge-btn"]} mt-3`}
         onClick={props.onClickBtn}

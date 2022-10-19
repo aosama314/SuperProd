@@ -46,6 +46,19 @@ const NavBar = () => {
 
   const menuItems = (
     <React.Fragment>
+      {authState ? (
+        <div
+          className="d-flex align-items-center cursor-pointer active-tab"
+          onClick={() => {
+            // if (authState) setNavbarState("/user/challenges");
+            // else setNavbarState("/");
+            setNavbarState("/user");
+          }}
+        >
+          <img src={HomeIcon} className="mr-1" width="30px" />
+          <span className={`${Styles["menu-item-font"]}`}>Home</span>
+        </div>
+      ) : null}
       <div
         className="d-flex align-items-center cursor-pointer active-tab"
         onClick={() => {
@@ -60,24 +73,21 @@ const NavBar = () => {
       </div>
       <div
         className="d-flex align-items-center cursor-pointer"
-        // onClick={() => {
-        //   if (authState) setNavbarState("/user/challenges");
-        // }}
+        onClick={() => {
+          if (authState) setNavbarState("/user/todo");
+        }}
       >
         <img src={!authState ? AboutUsIcon : RewardsIcon} className="mr-1" />
         <span className={`${Styles["menu-item-font"]}`}>
-          {!authState ? "About Us" : "Rewards"}
+          {!authState ? "About Us" : "Todo"}
         </span>
       </div>
-      <div className="d-flex align-items-center cursor-pointer">
-        <img
-          src={!authState ? TestimonialsIcon : AchievementsIcon}
-          className="mr-1"
-        />
-        <span className={`${Styles["menu-item-font"]}`}>
-          {!authState ? "Testimonials" : "Achievements"}
-        </span>
-      </div>
+      {!authState ? (
+        <div className="d-flex align-items-center cursor-pointer">
+          <img src={TestimonialsIcon} className="mr-1" />
+          <span className={`${Styles["menu-item-font"]}`}>Testimonials</span>
+        </div>
+      ) : null}
       {authState && (
         <div
           className="d-flex align-items-center cursor-pointer"

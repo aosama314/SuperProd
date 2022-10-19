@@ -14,52 +14,6 @@
     font-style: normal;
 }
 
-.challenges-header-img {
-    background-image: url(../../../assets/challengesHeaderImg.png);
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.challenges-container {
-    background: linear-gradient(112.83deg, rgba(255, 255, 255, 0.47) 0%, rgba(255, 255, 255, 0) 110.84%);
-    border: 2px solid #DADADA;
-    border-radius: 15px;
-    font-family: 'Poppins';
-    font-style: normal;
-}
-
-.create-challenge-btn {
-    border-radius: 7px;
-    color: linear-gradient(123.74deg, rgba(230, 0, 0, 0.84) 63.8%, #FFB6B6 114.12%);
-    border: none;
-    background: #FFFFFF;
-    box-shadow: 0px 1px 9px rgba(230, 0, 0, 0.2);
-    width: 230.64px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    color: red;
-    font-size: 14px;
-}
-
-.challenges-categories-btn {
-    background: #F5F5F5;
-    border-radius: 4px;
-    border: none;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 13px;
-    padding: 10px;
-    margin-left: 10px;
-    color: #455A64;
-}
-
-.active-category {
-    border: 1px solid red;
-    color: red;
-}
-
 .productivity-container {
     background: linear-gradient(112.83deg, rgba(255, 255, 255, 0.47) 0%, rgba(255, 255, 255, 0) 110.84%);
     border: 2px solid #F2F2F2;
@@ -108,4 +62,21 @@
     font-size: 12px;
     color: #FFFFFF;
     margin-top: 4px;
+}
+
+.challenges-container {
+    background: linear-gradient(112.83deg, rgba(255, 255, 255, 0.47) 0%, rgba(255, 255, 255, 0) 110.84%);
+    border: 2px solid #DADADA;
+    border-radius: 15px;
+    font-family: 'Poppins';
+    font-style: normal;
+}
+
+.img-styles {
+    width: 120px;
+    margin: 15px;
+}
+
+.challenge-height {
+    height: 256px;
 }

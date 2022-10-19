@@ -21,6 +21,20 @@ export const getChallengesAsync = createAsyncThunk(
   }
 );
 
+export const createCustomChallenge = createAsyncThunk(
+  "challenges/createCustomChallenge",
+  async (requestObject, thunkAPI) => {
+    return await axios
+      .post("https://localhost:5001/api/Challanges", requestObject, thunkAPI)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => {
+        return err.message;
+      });
+  }
+);
+
 export const challengesSlice = createSlice({
   name: "challenges",
   initialState,

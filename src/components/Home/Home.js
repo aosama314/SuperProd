@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import Styles from "./Home.module.css";
 import HomeImg from "../../assets/HomeImg.png";
@@ -11,6 +12,14 @@ import NotificationIcon from "../../assets/NotificationIcon.png";
 
 const Home = () => {
   const { height, width } = useWindowDimensions();
+  const navigate = useNavigate();
+
+  if (
+    localStorage.getItem("isLoggedIn") === "true" &&
+    localStorage.getItem("userEmail")
+  ) {
+    navigate("/user/challenges");
+  }
 
   return (
     <React.Fragment>

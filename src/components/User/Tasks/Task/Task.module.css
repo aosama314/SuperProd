@@ -25,3 +25,29 @@
     justify-content: center;
     align-items: center;
 }
+
+.done-task {
+    background-color: rgba(230, 0, 0, 0.84);
+}
+
+.done-task-num-of-day {
+    background: #FFFFFF;
+    color: red;
+    border-radius: 50%;
+    width: 35.16px;
+    height: 35.16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-number-of-day {
+    background: #464E5F;
+    color: #FFFFFF;
+    border-radius: 50%;
+    width: 35.16px;
+    height: 35.16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,95 @@
+.todo-container {
+    background: linear-gradient(112.83deg, rgba(255, 255, 255, 0.47) 0%, rgba(255, 255, 255, 0) 110.84%);
+    border: 2px solid #DADADA;
+    border-radius: 15px;
+    font-family: 'Poppins';
+    font-style: normal;
+}
+
+.todo-list {
+    background: #FBFBFB;
+    border-radius: 9px;
+    border: 1px solid #DADADA;
+}
+
+.todo-item {
+    background: #EAEAEA;
+    border-radius: 4px;
+}
+
+.todo-progress {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.011em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.done {
+    color: #52B35E;
+}
+
+.today {
+    color: #E60000;
+}
+
+.remaining {
+    color: #FFA800;
+}
+
+.task-area {
+    width: 530px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 15px;
+    resize: none;
+    outline: none;
+}
+
+.cancel-btn {
+    width: 191px;
+    height: 56px;
+    border: 1px solid #464E5F;
+    border-radius: 8px;
+    outline: none;
+    margin: 5px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: -0.011em;
+    color: #000000;
+}
+
+.create-btn {
+    width: 191px;
+    height: 56px;
+    border: 1px solid #464E5F;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    background: linear-gradient(123.74deg, rgba(230, 0, 0, 0.84) 63.8%, #FFB6B6 114.12%);
+    margin: 5px;
+    border-radius: 8px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: -0.011em;
+    color: #FFFFFF;
+}
+
+.modal-header {
+    font-size: 18px;
+}
+
+.close-modal-icon {
+    border-radius: 50%;
+    box-shadow: 0px 4px 9px rgb(0 0 0 / 19%);
+    cursor: pointer;
+}

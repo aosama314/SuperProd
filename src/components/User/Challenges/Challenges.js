@@ -8,8 +8,8 @@ import AddButtonIcon from "../../../assets/AddButtonIcon.png";
 import LaptopImg from "../../../assets/LaptopImg.png";
 
 import Challenge from "./Challenge/Challenge";
-import { BiBookOpen, BiBody, BiTime } from "react-icons/bi";
-import { BsHeart, BsFilePerson } from "react-icons/bs";
+import { BiBookOpen, BiBody, BiTime, BiUserCircle } from "react-icons/bi";
+import { BsHeart, BsFilePerson, BsArrowUpRight } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -26,6 +26,8 @@ import {
   selectCategoriesError,
 } from "../../../store/reducers/categories";
 import NavBar from "../../Navbar/Navbar";
+
+import Sidebar from "../../common/Sidebar/Sidebar";
 
 const nthOfDays = (d) => {
   if (d > 3 && d < 21) return "th";
@@ -76,21 +78,16 @@ const Challenges = () => {
             switch (cat) {
               case "Education":
                 return { title: cat, icon: BiBookOpen };
-                break;
               case "Sport":
                 return { title: cat, icon: BiBody };
-                break;
               case "Personal":
                 return { title: cat, icon: BsFilePerson };
-                break;
               case "Health":
                 return { title: cat, icon: BsHeart };
-                break;
               case "Management":
                 return { title: cat, icon: BiTime };
-                break;
               default:
-                break;
+                return { title: cat, icon: BsArrowUpRight };
             }
           })
         : []
@@ -104,6 +101,8 @@ const Challenges = () => {
   const handleCategorySelection = (catObject) => {
     setActiveCategory(catObject.title);
   };
+
+  console.log(categories);
 
   useEffect(() => {
     const getChallengesAsyncPromise = dispatch(getChallengesAsync());
@@ -122,7 +121,9 @@ const Challenges = () => {
     if (selectChallengesSelector) {
       setFilteredChallenges(
         selectChallengesSelector.filter((challenge) => {
-          return challenge.category === activeCategory;
+          return activeCategory === "Recommended"
+            ? challenge
+            : challenge.category === activeCategory;
         })
       );
     }
@@ -138,180 +139,18 @@ const Challenges = () => {
   return (
     <React.Fragment>
       <NavBar />
-
-      {/* <div className={`container`}>
-        <div className={`row mt-5 mb-5 ${Styles["challenges-header-row"]}`}>
-          <div
-            className={`col-md-12 p-4 ${Styles["challenges-header-text-color"]}`}
-          >
-            <h1 className="mb-4 mt-4">
-              Hello, {localStorage.getItem("userName")}
-            </h1>
-            <h3 className="mt-4 mb-4"> {dateFormatter()} </h3>
-            <p className="mt-4 mb-4">
-              "Let today be the start of something new."
-            </p>
-          </div>
-        </div>
-      </div>
-      <div
-        className={`container p-4 mt-5 mb-5 ${Styles["challenges-container"]}`}
-      >
-        <div className={`row`}>
-          <div className="col-sm-12 col-md-12 d-flex justify-content-between">
-            <h3>Challenges</h3>
-            <button className={`${Styles["create-challenge-btn"]}`}>
-              <img src={AddButtonIcon} className="mr-1 ml-1" />
-              Create Your Own Challenge
-            </button>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-sm-12 col-md-12 mb-4 mt-3">
-            {!selectCategoriesErrorSelector &&
-              !selectCategoriesLoadingSelector &&
-              selectCategoriesSelector &&
-              categories.map((cat, index) => {
-                return (
-                  <button
-                    key={index}
-                    className={`${Styles["challenges-categories-btn"]} ${
-                      activeCategory === cat.title
-                        ? Styles["active-category"]
-                        : ""
-                    }`}
-                    onClick={handleCategorySelection.bind(this, cat)}
-                  >
-                    <cat.icon size="16px" className="mr-1" />
-                    {cat.title}
-                  </button>
-                );
-              })}
-          </div>
-        </div>
-
-        <div className="row justify-content-center">
-          {selectChallengesLoadingSelector &&
-            !selectChallengesErrorSelector &&
-            !selectChallengesSelector && <Loader />}
-
-          {!selectChallengesLoadingSelector &&
-            !selectChallengesErrorSelector &&
-            selectChallengesSelector &&
-            filteredChallenges.map((challenge, index) => (
-              <div
-                key={index}
-                className="col-sm-12 col-md-3 d-flex justify-content-center"
-              >
-                <Challenge
-                  title={challenge.name}
-                  img={LaptopImg}
-                  onClickBtn={handleChallengeTasks.bind(this, challenge)}
-                />
-              </div>
-            ))}
-        </div>
-      </div> */}
-
-      {/* <div className={`container-fluid`}>
-        <div
-          className={`row mx-5 mt-5 mb-5 ${Styles["challenges-header-row"]}`}
-        >
-          <div
-            className={`col-md-12 p-4 ${Styles["challenges-header-text-color"]}`}
-          >
-            <h1 className="mb-4 mt-4">
-              Hello, {localStorage.getItem("userName")}
-            </h1>
-            <h3 className="mt-4 mb-4"> {dateFormatter()} </h3>
-            <p className="mt-4 mb-4">
-              "Let today be the start of something new."
-            </p>
-          </div>
-        </div>
-
-        <div
-          className={`row mx-5 p-4 mt-5 mb-5 ${Styles["challenges-container"]}`}
-        >
-          <div className="col-sm-12 col-md-12 d-flex justify-content-between">
-            <h3>Challenges</h3>
-            <button className={`${Styles["create-challenge-btn"]}`}>
-              <img src={AddButtonIcon} className="mr-1 ml-1" />
-              Create Your Own Challenge
-            </button>
-          </div>
-
-          <div className="col-sm-12 col-md-12 mb-4 mt-3">
-            {!selectCategoriesErrorSelector &&
-              !selectCategoriesLoadingSelector &&
-              selectCategoriesSelector &&
-              categories.map((cat, index) => {
-                return (
-                  <button
-                    key={index}
-                    className={`${Styles["challenges-categories-btn"]} ${
-                      activeCategory === cat.title
-                        ? Styles["active-category"]
-                        : ""
-                    }`}
-                    onClick={handleCategorySelection.bind(this, cat)}
-                  >
-                    <cat.icon size="16px" className="mr-1" />
-                    {cat.title}
-                  </button>
-                );
-              })}
-          </div>
-
-          <div className="col-sm-12 justify-content-center">
-            {selectChallengesLoadingSelector &&
-              !selectChallengesErrorSelector &&
-              !selectChallengesSelector && <Loader />}
-          </div>
-          {!selectChallengesLoadingSelector &&
-            !selectChallengesErrorSelector &&
-            selectChallengesSelector &&
-            filteredChallenges.map((challenge, index) => (
-              <div
-                key={index}
-                className="col-sm-12 col-md-3 d-flex justify-content-center"
-              >
-                <Challenge
-                  title={challenge.name}
-                  img={LaptopImg}
-                  onClickBtn={handleChallengeTasks.bind(this, challenge)}
-                />
-              </div>
-            ))}
-        </div>
-      </div> */}
-
       <div className={`container-fluid`}>
         <div className="row">
-          <div className="col-sm-12 col-md-8">
-            <div
-              className={`row mt-5 mb-5 ml-md-5 mr-md-1 mx-sm-5 ${Styles["challenges-header-row"]}`}
-            >
-              <div
-                className={`col-md-12 p-4 ${Styles["challenges-header-text-color"]}`}
-              >
-                <h1 className="mb-4 mt-4">
-                  Hello, {localStorage.getItem("userName")}
-                </h1>
-                <h3 className="mt-4 mb-4"> {dateFormatter()} </h3>
-                <p className="mt-4 mb-4">
-                  "Let today be the start of something new."
-                </p>
-              </div>
-            </div>
-
+          <div className="col-sm-12 col-md-8 mt-1">
             <div
               className={`row p-4 mt-5 mb-5 ml-md-5 mr-md-1 mx-sm-5 ${Styles["challenges-container"]}`}
             >
               <div className="col-sm-12 col-md-12 d-flex justify-content-between">
                 <h3>Challenges</h3>
-                <button className={`${Styles["create-challenge-btn"]}`}>
+                <button
+                  className={`${Styles["create-challenge-btn"]}`}
+                  onClick={() => navigate("/user/challenge/add")}
+                >
                   <img src={AddButtonIcon} className="mr-1 ml-1" />
                   Create Your Own Challenge
                 </button>
@@ -363,9 +202,7 @@ const Challenges = () => {
           </div>
 
           <div className={`col-sm-12 col-md-4`}>
-            <div
-              className={`mt-5 mx-sm-5 ml-md-0 mr-md-5 ${Styles["productivity-container"]}`}
-            ></div>
+            <Sidebar />
           </div>
         </div>
       </div>

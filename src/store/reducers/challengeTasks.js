@@ -29,6 +29,28 @@ export const getChallengeTasksAsync = createAsyncThunk(
   }
 );
 
+export const finishTodayTaskAsync = createAsyncThunk(
+  "tasks/finishTodayTaskAsync",
+  async ({ taskId, userEmail }, thunkAPI) => {
+    const requestTaskObject = {
+      taskId: taskId,
+      loggedInUserEmail: userEmail,
+    };
+    return await axios
+      .post(
+        `https://localhost:5001/api/UserChallangeDetails`,
+        requestTaskObject,
+        thunkAPI
+      )
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => {
+        return err.message;
+      });
+  }
+);
+
 export const challengeTasksSlice = createSlice({
   name: "tasks",
   initialState,
@@ -44,6 +66,21 @@ export const challengeTasksSlice = createSlice({
       state.tasks = null;
     },
     [getChallengeTasksAsync.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+      state.tasks = null;
+    },
+    [finishTodayTaskAsync.fulfilled]: (state, action) => {
+      // state.tasks = state.tasks;
+      state.loading = false;
+      state.error = null;
+    },
+    [finishTodayTaskAsync.pending]: (state, action) => {
+      state.loading = true;
+      state.error = null;
+      state.tasks = null;
+    },
+    [finishTodayTaskAsync.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload;
       state.tasks = null;

@@ -27,6 +27,7 @@ export const categoriesSlice = createSlice({
   extraReducers: {
     [getCategoriesAsync.fulfilled]: (state, action) => {
       state.categories = action.payload;
+      state.categories.unshift("Recommended");
       state.loading = false;
       state.error = null;
     },
