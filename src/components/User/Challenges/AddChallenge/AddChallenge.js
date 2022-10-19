@@ -146,7 +146,7 @@ const AddChallenge = () => {
 
     dispatch(createCustomChallenge(requestObject));
 
-    console.log(requestObject);
+    navigate("/user/challenges");
   };
 
   return (
