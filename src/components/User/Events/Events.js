@@ -34,11 +34,11 @@ const Events = () => {
             <div
               className={`row p-4 mt-5 mb-5 ml-md-5 mr-md-1 mx-sm-5 ${Styles["events-container"]}`}
             >
-              <div className="col-sm-12 col-md-12 d-flex justify-content-between mb-4">
+              <div className="col-sm-12 col-md-12 d-flex justify-content-between mb-3">
                 <h3>Events</h3>
               </div>
 
-              <div className="col-sm-12 col-md-12 mb-4 mt-4">
+              <div className="col-sm-12 col-md-12 mb-0 mt-4 pl-2">
                 {categories.map((cat, index) => {
                   return (
                     <button

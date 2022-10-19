@@ -145,7 +145,7 @@ const Challenges = () => {
             <div
               className={`row p-4 mt-5 mb-5 ml-md-5 mr-md-1 mx-sm-5 ${Styles["challenges-container"]}`}
             >
-              <div className="col-sm-12 col-md-12 d-flex justify-content-between">
+              <div className="col-sm-12 col-md-12 d-flex justify-content-between mb-4">
                 <h3>Challenges</h3>
                 <button
                   className={`${Styles["create-challenge-btn"]}`}
@@ -156,7 +156,7 @@ const Challenges = () => {
                 </button>
               </div>
 
-              <div className="col-sm-12 col-md-12 mb-4 mt-3">
+              <div className="col-sm-12 col-md-12 mb-3 mt-4">
                 {!selectCategoriesErrorSelector &&
                   !selectCategoriesLoadingSelector &&
                   selectCategoriesSelector &&

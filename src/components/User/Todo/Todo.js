@@ -52,6 +52,21 @@ const Todo = () => {
     setShowModal(!showModal);
   };
 
+  const handleFetchData = () => {
+    axios
+      .get(
+        `https://localhost:5001/api/ToDo?Email=${localStorage.getItem(
+          "userEmail"
+        )}`
+      )
+      .then((res) => {
+        if (res.data?.length > 0) {
+          setTodoList(res.data.filter((item) => item.status === "Submitted"));
+          setDoneTodoList(res.data.filter((item) => item.status === "Done"));
+        }
+      });
+  };
+
   const handleCreateTodo = () => {
     if (!editMode) {
       const newTodoObject = {
@@ -66,7 +81,11 @@ const Todo = () => {
         .then((res) => {
           setTodoList(newTodoArr);
         })
-        .finally(() => handleModalOpening());
+        .finally(() => {
+          setTodoDetails("");
+          handleFetchData();
+          handleModalOpening();
+        });
     } else {
       setTodoList(
         todoList.map((item) => {
@@ -128,19 +147,8 @@ const Todo = () => {
   };
 
   useEffect(() => {
-    axios
-      .get(
-        `https://localhost:5001/api/ToDo?Email=${localStorage.getItem(
-          "userEmail"
-        )}`
-      )
-      .then((res) => {
-        if (res.data?.length > 0) {
-          setTodoList(res.data.filter((item) => item.status === "Submitted"));
-          setDoneTodoList(res.data.filter((item) => item.status === "Done"));
-        }
-      });
-  }, [axios]);
+    handleFetchData();
+  }, []);
 
   return (
     <React.Fragment>
@@ -151,7 +159,7 @@ const Todo = () => {
             <div
               className={`row p-4 mt-5 mb-5 ml-md-5 mr-md-1 mx-sm-5 ${Styles["todo-container"]}`}
             >
-              <div className="col-sm-12 col-md-12 d-flex justify-content-between">
+              <div className="col-sm-12 col-md-12 d-flex justify-content-between mb-3">
                 <h3>Todo List</h3>
               </div>
 
